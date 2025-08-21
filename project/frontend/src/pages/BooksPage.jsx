@@ -13,7 +13,7 @@ export default function BooksPage() {
   const [ordering, setOrdering] = useState("-created_at");
   const debouncedQ = useDebounce(q, 300);
 
-  // Notes state
+  // Books state
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState("");
