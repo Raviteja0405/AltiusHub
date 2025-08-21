@@ -42,7 +42,7 @@ export default function BooksPage() {
     try {
       setLoading(true);
       setErr("");
-      const res = await api.get(`api/?${queryParams}`);
+      const res = await api.get(`?${queryParams}`);
       setBooks(res.data);
     } catch {
       setErr("Failed to load notes.");
@@ -56,7 +56,7 @@ export default function BooksPage() {
     if (!title.trim()) return;
 
     try {
-      await api.post("api/create", { title, author, year, category });
+      await api.post("create", { title, author, year, category });
       setTitle("");
       setAuthor("");
       setYear("");
@@ -83,7 +83,7 @@ export default function BooksPage() {
       const changes = editMap[id];
       if (!changes) return;
       try {
-        await api.patch(`api/${id}/`, changes);
+        await api.patch(`${id}/`, changes);
         editHandlers.cancelEdit(id);
         fetchNotes();
       } catch {
@@ -93,7 +93,7 @@ export default function BooksPage() {
     remove: async (id) => {
       if (!confirm("Delete this note?")) return;
       try {
-        await api.delete(`api/${id}/`);
+        await api.delete(`${id}/`);
         fetchNotes();
       } catch {
         alert("Delete failed.");
