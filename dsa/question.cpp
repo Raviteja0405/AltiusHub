@@ -31,10 +31,10 @@ int main(){
             temp.push_back(unsorted_data[i]);
         }
         temp.push_back(nums[++right]);
+        unsorted_data = temp;
+
         sorted_data = unsorted_data;
         sort(sorted_data.begin(), sorted_data.end());
-
-        unsorted_data = temp;
         left++;
     }
     for(int i =0;i<ans.size();i++){
